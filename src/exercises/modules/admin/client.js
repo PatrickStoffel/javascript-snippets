@@ -1,7 +1,8 @@
 'use strict'
 
-import Person from './person'
-import Store from './store'
+import {Person, Store} from './admin.module'
+//import Person from './person'
+//import Store from './store'
 
 let per1 = new Person
 per1.name = 'Muster'
