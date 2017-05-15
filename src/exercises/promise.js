@@ -15,3 +15,26 @@
 // c
 // Rufe die Funktion calcX 10 mal auf, summiere alle erfolgreichen Werte. Logge die fehlschläge.
 // Verwende jeweils i/10 als Parameterwert.
+
+
+// 2
+// Zeichne für folgende Code-Schnippsel ein Ablaufdiagram aller möglichen Abläufe.
+
+// a
+getDetails(card.id)
+    .then(initDetails.bind(null, card))
+    .finally(loading.bind(null, false))
+
+// b
+showExecuteListConfirmationDialog()
+    .then(callExecuteApi.bind(null, paymentsForExecution))
+    .then(done.bind(null, true))
+    .then(MessageBus.publish.bind(null, 'paymentListExecuted', paymentList, executionDate))
+    .catch(hanleError)
+
+// c
+indicateLoading(true)
+    .then(loadRegions.bind(null, card.id))
+    .then(assignRegions)
+    .catch(handleError)
+    .finally(indicateLoading.bind(this, false))
