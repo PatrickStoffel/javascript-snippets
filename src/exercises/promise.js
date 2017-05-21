@@ -20,6 +20,8 @@
 // 2
 // Zeichne für folgende Code-Schnippsel ein Ablaufdiagram aller möglichen Abläufe.
 
+/*
+Beispiele aus einer Onlinebanking Applikation --> siehe Notizen
 // a
 getDetails(card.id)
     .then(initDetails.bind(null, card))
@@ -38,3 +40,26 @@ indicateLoading(true)
     .then(assignRegions)
     .catch(handleError)
     .finally(indicateLoading.bind(this, false))
+*/
+
+
+
+// 1a
+function calcX(z){
+     return new Promise((res, rej)=>{
+         if(z < 0.8){
+             res(z)
+         }else{
+             rej(new Error(`Zahl ${z} ist zu gross`))
+         }
+     })
+}
+
+//calcX(0.8).then(console.log).catch(console.log)
+//calcX(0.3).then(console.log).catch(console.log)
+
+//
+let i = 0
+while(++i <= 10){
+     calcX(i/10).then(console.log).catch(_=>_) //catch-Handler ist eine leere Funktion, _ ist ein gültiger Variablen-Name
+}
