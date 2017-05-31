@@ -1,0 +1,122 @@
+Themen:
+
+Arrays
+
+    Fragen:
+        - Wie lösche ich das zweite Element aus einem Array?
+            - [1, 2].splice(1, 1)
+        - Wie finde ich alle Personen die mit A beginnen?
+            - persons.filter(p=>p.startsWith('A'))
+        - Wie summiere ich das alter aller Personen?
+            - persons.reduce((summe, p)=>summe+=p.alter, 0)
+        - Wie kriege ich einen Array aller Vornamen aus einem Array von Personen?
+            - persons.map(p=>p.vorname)
+        - Wie kriege ich einen Array aller Vornamen (ohne Duplikate) aus einem Array von Personen?
+            - new Set(persons.map(p=>p.vorname))
+        - Wie wandle ich ein Array-Like Objekt in einen Array um?
+            [].prototype.splice.call(arguments)
+            Array.apply(null, arguments)
+            [...(document.querySelectorAll('div'))]
+                
+Destructering
+
+    Fragen:
+        - Wie extrahiere ich die Eigenschaft target des Event Objekt-Arguments direkt in der Funktions-Argumentliste?
+            ({target})=>{}
+        - Wie kann ich zwei Variabel-Werte swappen/tauschen?
+            [a, b] = [b, a]
+        - Wie kann ich aus dem String "Hans Muster" in einem Statement/Befehl/Zeile die Variablen vorname und nachname abfüllen?
+            let [vorname, nachname] = "Hans Muster".split(' ')
+
+Funktionen
+
+    Fragen:
+        - Wie erstelle ich eine Funktion, welche den this-Kontext gesetzt hat?
+            newFn = existingFn.bind(desiredThis)
+        - Wie rufe ich eine Funktion mit einem gewünschten this-Kontext und gewünschten Argumenten auf?
+            fn.call(desiredThis, arg1, arg2)
+            fn.apply(desiredThis, [arg1, arg2])
+        - Was ist this im strict mode, wenn Funktion ohne new augerufen wird?
+            console.log(this) => undefined
+        - Was ist this im strict mode, wenn Funktion mit new aufgerufen wird?
+            console.log(this) => {}
+        - Was ist this im none-strict mode, wenn Funktion (definiert im globalen Scope) ohne new auferufen wird?
+            console.log(this) => "global"
+        - Wie ordne ich beim Aufruf eine Funktion die Elemente eines Array den einzelnen Funktionsargumenten zu?
+            fn(...[arg1, arg2])
+        - Wie fasse ich in der Funktionsdeklaration mehrere Laufzeit-Argumente zu einem Array zusammen?
+            (...args)=>{}
+        - Wie definiere ich eine Funktion die keinen eigenen Scope hat?
+            ()=>{}
+        - Wie heisst die Variable in der alle Laufzeit-Argumente innerhalb einer Funktion verfügbar sind?
+            arguments
+
+OOP (Prototypes, Klassen)
+
+    Fragen:
+        - Wie erstelle ich eine Methode, die für jedes Objekt neu erzeugt wird?
+            function Obj(){ this.methode = function(){} }
+        - Wie erstelle ich eine Methode, die nur einmal im Prototypen-Objekt erzeugt wird?
+            function Obj(){ }
+            Obj.prototype.methode = function(){}
+        - Wie heisst die Eigenschaft, welche auf den Prototypen eines Objekts zeigt?
+            __proto__
+        - Wie definiere ich eine Klasse mit einer Methode?
+            class A{ methode(){} }
+        - Wie heisst der "oberste" Prototyp von jedem Objekt (sofern nicht explizit anders definiert)?
+            Object
+        - Wie definiere ich Objekt mit null als Prototypen?
+            Object.create(null)
+        - Wie überschreibe ich die Methode toString() in einer Klasse?
+            class A{ toString(){} }
+
+Operatoren (> < = == . () etc)
+
+    Fragen:
+        - Wie überprüfe ich ob ein Werte falsy ist?
+            a == null
+            !a
+        - Wie überprüfe ich ob ein Wert truethy ist?
+            a
+        - Wie wandle ich einen Wert in einen Boolean um?
+            !!a
+        - Wie überprüfe ich ob ein Wert undefined ist?
+            a === undefined
+        - Wie überprüfe ich ob ein Wert null ist?
+            a === null
+        - Wie extrahiere ich eine verschachtelte Eigenschaft aus einem Objekt, ohne einen Fehler zu riskieren?
+            a = (config && config.api && config.api.repositories) || []
+        - Wie werfe ich einen Fehler, wenn a() nicht truethy ist?
+            done() || throw new Error('Fehlermeldung')
+        - Wie kann ich ein Default-Fallback-Wert einer Variable zuweisen, wenn eine andere nicht gesetzt ist?
+            url = config.url || 'google.com'
+
+Eigenschaften (Properties)
+
+    Fragen:
+        - Welche for Schleife iteriert über ein Iterable-Objekt?
+            for of
+        - Welche for Schleife iteriert über alle enumerierbaren Eigenschaften eines Objektes inklusive Prototypen-Kette?
+            for in
+        - Wie heisst das Symbol, welches ein Objekt als Methodenname verwenden muss, damit for of funktioniert?
+            Symbol.iterator
+
+Symbole
+
+    Fragen:
+        - 
+
+Promises
+
+    Fragen:
+        - Wie erstelle ich ein Promise, welches zu 1 resolved?
+            Promise.resolve(1)
+        - Wie erstelle ich ein Promise, welches zu 'Error' rejected?
+            Promise.reject('Error')
+        - Wie registriere ich ein Callback für den resolved Fall?
+            promise.then(()=>{})
+        - Wie registriere ich ein Callback für den rejected Fall?
+            promise.catch(()=>{})
+            promise.then(null, ()=>{})
+        - Wie erstelle ich ein Promise welches nach 1 Sekunde zu 100 resolved?
+            new Promise((res)=>{ setTimeout(res.bind(this, 100), 1000) })

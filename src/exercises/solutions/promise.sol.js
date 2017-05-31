@@ -1,14 +1,14 @@
 'use strict'
 // 1a
-// function calcX(base){
-//     return new Promise((res, rej)=>{
-//         if(base < 0.8){
-//             res(base)
-//         }else{
-//             rej(new Error(`Base ${base} ist zu klein`))
-//         }
-//     })
-// }
+function calcX(z){
+    return new Promise((res, rej)=>{
+        if(z < 0.8){
+            res(z)
+        }else{
+            rej(new Error(`Base ${z} ist zu gross`))
+        }
+    })
+}
 
 //calcX(0.8).then(console.log).catch(console.log)
 //calcX(0.3).then(console.log).catch(console.log)
@@ -18,18 +18,17 @@
 // }
 
 // 1b
-function calcX(base){
-    return new Promise((res, rej)=>{
-        setTimeout(()=>{
-            if(base < 0.8){
-                res(base)
-            }else{
-                rej(new Error(`Base ${base} ist zu klein`))
-            }
-        }, Math.random()*100)
-        
-    })
-}
+// function calcX(base){
+//     return new Promise((res, rej)=>{
+//         setTimeout(()=>{
+//             if(base < 0.8){
+//                 res(base)
+//             }else{
+//                 rej(new Error(`Base ${base} ist zu klein`))
+//             }
+//         }, Math.random()*100)
+//     })
+// }
 // let i = 0
 // while(++i <= 10){
 //     calcX(i/10).then(console.log).catch(_=>_)
@@ -46,6 +45,7 @@ while(++i <= 10){
         return 0
     }))
 }
+
 Promise.all(promises)
 .then((values)=>{
     return values.reduce((sum, value)=>sum+=value, 0)
